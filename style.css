@@ -1,10 +1,14 @@
+body {
+ background: #dbe3ff;
+};
+
 .container {
   display: flex;
   height: 100vh;
   width: 100%;
   justify-content: center;
   align-items: center;
-}
+};
 
 .item {
   padding: 50px;
@@ -14,8 +18,8 @@
   border: 6px solid black;
   font-size: 75px;
   box-shadow: 0px 8px 14px -1px rgba(135,135,135,1);
-}
+};
 
 .item:hover {
   background-color: #2551f7;
-}
+};
