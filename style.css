@@ -1,6 +1,6 @@
 body {
- background: #dbe3ff;
-};
+ background: #ffffff;
+}
 
 .container {
   display: flex;
@@ -8,18 +8,25 @@ body {
   width: 100%;
   justify-content: center;
   align-items: center;
-};
+}
 
 .item {
-  padding: 50px;
+  /* padding: 50px; */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 190px;
+  min-width: 190px;
   background-color: #5376fc;
   margin: 15px;
   border-radius: 50%;
   border: 6px solid black;
   font-size: 75px;
   box-shadow: 0px 8px 14px -1px rgba(135,135,135,1);
-};
+}
 
 .item:hover {
-  background-color: #2551f7;
-};
+  background-color: #f2f533;
+  font-size: 85px;
+}

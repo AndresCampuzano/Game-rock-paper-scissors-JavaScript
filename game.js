@@ -4,6 +4,8 @@
 document.getElementById("rock").addEventListener("click", rockFunction);
 document.getElementById("paper").addEventListener("click", paperFunction);
 document.getElementById("scissors").addEventListener("click", scissorsFunction);
+document.getElementById("scissors").addEventListener("click", scissorsFunction);
+document.getElementById("scissors").addEventListener("click", scissorsFunction);
 
 //turning id in strings
 function rockFunction() {
