@@ -12,7 +12,8 @@
   margin: 15px;
   border-radius: 50%;
   border: 6px solid black;
-  font-size: 75px
+  font-size: 75px;
+  box-shadow: 0px 8px 14px -1px rgba(135,135,135,1);
 }
 
 .item:hover {
