@@ -9,8 +9,8 @@ body {
   width: 100%;
   justify-content: center;
   align-items: center;
+  /* responsive */
   flex-flow: wrap;
-  /* z-index: -1; */
 }
 
 .item {

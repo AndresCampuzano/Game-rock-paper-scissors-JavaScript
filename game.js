@@ -42,6 +42,7 @@ function game(playerOne) {
     //Template to render in Modal
     const idToRenderModal = document.getElementById("toRenderModal")
     function template(y) {
+        console.log(y);
         let templateModal = `
               <div class="modal" id="modal">
                   <h1>${y}</h1>
@@ -59,7 +60,7 @@ function game(playerOne) {
 
 
     const x = Math.round(Math.random() * 9); // getting a random number between 0 and 9
-    console.log(x);
+    // console.log(x);
 
     // 0 - 1 rock
     // 2 - 3 paper
@@ -67,8 +68,8 @@ function game(playerOne) {
     // 6 - 7 lizard
     // 8 - 9 spock
     if (x === 0 || x === 1) {
-        // 0 - 1 rock
         const machinePlayer = "rock";
+        // 0 - 1 rock
         if (playerOne === "paper") {
             let y = `✅ you: ${paper}, machine: ${rock}, Paper covers Rock`;
             template(y);
@@ -83,69 +84,85 @@ function game(playerOne) {
             template(y);
         } else if (playerOne === machinePlayer) {
             let y = `DRAW, you: ${rock}, machine: ${rock}`;
-            console.log(y);
             template(y);
         }
     } else if (x === 2 || x === 3) {
-        // 2 - 3 paper
         const machinePlayer = "paper";
+        // 2 - 3 paper
         if (playerOne === "rock") {
-            let y =`❌ you: ${rock}, machine: ${paper}, Paper covers Rock`;
+            let y = `❌ you: ${rock}, machine: ${paper}, Paper covers Rock`;
             template(y);
         } else if (playerOne === "scissors") {
-            let y =`✅ you: ${scissors}, machine: ${paper}, Scissors cuts Paper`;
+            let y = `✅ you: ${scissors}, machine: ${paper}, Scissors cuts Paper`;
+            template(y);
+        } else if (playerOne === "lizard") {
+            let y = `✅ you: ${lizard}, machine: ${paper}, Lizard eats Paper`;
+            template(y);
+        } else if (playerOne === "spock") {
+            let y = `❌ you: ${spock}, machine: ${paper}, Paper disproves Spock (I don't know why)`;
             template(y);
         } else if (playerOne === machinePlayer) {
-            let y =`DRAW ⚠`;
+            let y = `DRAW, you: ${paper}, machine: ${paper}`;
             template(y);
         }
     } else if (x === 4 || x === 5) {
-        // 4 - 5 scissors
         const machinePlayer = "scissors";
+        // 4 - 5 scissors
         if (playerOne === "rock") {
-            let y =`✅ you: ${rock}, machine: ${scissors}`;
+            let y = `✅ you: ${rock}, machine: ${scissors}, Rock crushes Scissors`;
             template(y);
         } else if (playerOne === "paper") {
-            let y =`❌ you: ${paper}, machine: ${scissors}, Scissors cuts Paper`;
+            let y = `❌ you: ${paper}, machine: ${scissors}, Scissors cuts Paper`;
+            template(y);
+        } else if (playerOne === "lizard") {
+            let y = `❌ you: ${lizard}, machine: ${scissors}, Scissors decapitates Lizard`;
+            template(y);
+        } else if (playerOne === "spock") {
+            let y = `✅ you: ${spock}, machine: ${scissors}, Spock smashes Scissors`;
             template(y);
         } else if (playerOne === machinePlayer) {
-            let y =`DRAW ⚠`;
+            let y = `DRAW, you: ${scissors}, machine: ${scissors}`;
             template(y);
         }
     } else if (x === 6 || x === 7) {
-        // 6 - 7 lizard
         const machinePlayer = "lizard";
-        console.log("Machine chose: " + machinePlayer);
-
-        // if (playerOne === "rock") {
-        //     console.log(`✅ you: ${rock}, machine: ${lizard}, Rock crushes Lizard`);
-        // } else if (playerOne === "paper") {
-        //     console.log(`❌ you: ${paper}, machine: ${lizard}, Lizard eats Paper`);
-        // } else if (playerOne === "scissors") {
-        //     console.log(`✅ you: ${scissors}, machine: ${lizard}, Scissors decapitates Lizard`);
-        // } else if (playerOne === "spock") {
-        //     console.log(`❌ you: ${spock}, machine: ${lizard}, Lizard poisons Spock`);
-        // } else if (playerOne === machinePlayer) {
-        //     console.log(`DRAW ⚠`);
-        // }
+        // 6 - 7 lizard
+        if (playerOne === "rock") {
+            let y = `✅ you: ${rock}, machine: ${lizard}, Rock crushes Lizard`;
+            template(y);
+        } else if (playerOne === "paper") {
+            let y = `❌ you: ${paper}, machine: ${lizard}, Lizard eats Paper`;
+            template(y);
+        } else if (playerOne === "scissors") {
+            let y = `✅ you: ${scissors}, machine: ${lizard}, Scissors decapitates Lizard`;
+            template(y);
+        } else if (playerOne === "spock") {
+            let y = `❌ you: ${spock}, machine: ${lizard}, Lizard poisons Spock`;
+            template(y);
+        } else if (playerOne === machinePlayer) {
+            let y = `DRAW, you: ${lizard}, machine: ${lizard}`;
+            template(y);
+        }
     }
 
     else if (x === 8 || x === 9) {
-        //     // 8 - 9 spock
         const machinePlayer = "spock";
-        console.log("Machine chose: " +  machinePlayer);
-
-        // if (playerOne === "rock") {
-        //     console.log(`❌ you: ${playerOne}, machine: ${machinePlayer}, Spock vaporizes Rock`);
-        // } else if (playerOne === "paper") {
-        //     console.log(`✅ you: ${playerOne}, machine: ${machinePlayer}, Paper disproves Spock`);
-        // } else if (playerOne === "scissors") {
-        //     console.log(`❌ you: ${playerOne}, machine: ${machinePlayer}, Spock smashes Scissors`);
-        // } else if (playerOne === "lizard") {
-        //     console.log(`❌ you: ${playerOne}, machine: ${machinePlayer}, Lizard poisons Spock`);
-        // } else if (playerOne === machinePlayer) {
-        //     console.log(`DRAW ⚠`);
-        // }
+        //     // 8 - 9 spock
+        if (playerOne === "rock") {
+            let y = `❌ you: ${playerOne}, machine: ${machinePlayer}, Spock vaporizes Rock`;
+            template(y);
+        } else if (playerOne === "paper") {
+            let y = `✅ you: ${playerOne}, machine: ${machinePlayer}, Paper disproves Spock (I don't know why)`;
+            template(y);
+        } else if (playerOne === "scissors") {
+            let y = `❌ you: ${playerOne}, machine: ${machinePlayer}, Spock smashes Scissors`;
+            template(y);
+        } else if (playerOne === "lizard") {
+            let y = `✅ you: ${playerOne}, machine: ${machinePlayer}, Lizard poisons Spock`;
+            template(y);
+        } else if (playerOne === machinePlayer) {
+            let y = `DRAW, you: ${spock}, machine: ${spock}`;
+        }
 
     }
 
