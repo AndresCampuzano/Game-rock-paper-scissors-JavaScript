@@ -149,29 +149,22 @@ function game(playerOne) {
         const machinePlayer = "spock";
         //     // 8 - 9 spock
         if (playerOne === "rock") {
-            let y = `❌ you: ${playerOne}, machine: ${machinePlayer}, Spock vaporizes Rock`;
+            let y = `❌ you: ${playerOne}, machine: ${spock}, Spock vaporizes Rock`;
             template(y);
         } else if (playerOne === "paper") {
-            let y = `✅ you: ${playerOne}, machine: ${machinePlayer}, Paper disproves Spock (I don't know why)`;
+            let y = `✅ you: ${playerOne}, machine: ${spock}, Paper disproves Spock (I don't know why)`;
             template(y);
         } else if (playerOne === "scissors") {
-            let y = `❌ you: ${playerOne}, machine: ${machinePlayer}, Spock smashes Scissors`;
+            let y = `❌ you: ${playerOne}, machine: ${spock}, Spock smashes Scissors`;
             template(y);
         } else if (playerOne === "lizard") {
-            let y = `✅ you: ${playerOne}, machine: ${machinePlayer}, Lizard poisons Spock`;
+            let y = `✅ you: ${playerOne}, machine: ${spock}, Lizard poisons Spock`;
             template(y);
         } else if (playerOne === machinePlayer) {
             let y = `DRAW, you: ${spock}, machine: ${spock}`;
         }
-
     }
-
-
-
 }
-
-
-//Modal
 
 
 
