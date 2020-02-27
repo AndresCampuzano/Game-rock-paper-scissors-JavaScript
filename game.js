@@ -15,156 +15,245 @@ document.getElementById("spock").addEventListener("click", spockFunction);
 
 //turning id in strings
 function rockFunction() {
-    var playerOne = "rock";
-    return game(playerOne);
+  var playerOne = "rock";
+  return game(playerOne);
 }
 function paperFunction() {
-    var playerOne = "paper";
-    return game(playerOne);
+  var playerOne = "paper";
+  return game(playerOne);
 }
 function scissorsFunction() {
-    var playerOne = "scissors";
-    return game(playerOne);
+  var playerOne = "scissors";
+  return game(playerOne);
 }
 function lizardFunction() {
-    var playerOne = "lizard";
-    return game(playerOne);
+  var playerOne = "lizard";
+  return game(playerOne);
 }
 function spockFunction() {
-    var playerOne = "spock";
-    return game(playerOne);
+  var playerOne = "spock";
+  return game(playerOne);
 }
 
 //Game
 function game(playerOne) {
+  //Template to render in Modal
+  const idToRenderModal = document.getElementById("toRenderModal");
+  function template(y, didIWon) {
+    console.log(y);
 
-
-    //Template to render in Modal
-    const idToRenderModal = document.getElementById("toRenderModal")
-    function template(y) {
-        console.log(y);
-        let templateModal = `
-              <div class="modal" id="modal">
-                  <h1>${y}</h1>
-                <div class="modal__buttons">
-                    <p>Play again</p>
-                    <p>Close</p>
+    if (didIWon === "yes") {
+      let templateModal = `
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h5 id="exampleModalLabel" class="badge badge-pill badge-success" style="
+                font-size: 1.5em;
+                border-radius: 5px;
+            ">You won!</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    ${y}
+                </div>
+                <div class="modal-footer">
+                  <p>Game created by Andrés Campuzano</p>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Play again</button>
                 </div>
               </div>
-            `
-        return renderModal(templateModal);
+            </div>
+          </div>
+          `;
+      return renderModal(templateModal);
+    } else if (didIWon === "no") {
+      let templateModal = `
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h5 id="exampleModalLabel" class="badge badge-pill badge-danger" style="
+                font-size: 1.5em;
+                border-radius: 5px;
+            ">You lost!</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    ${y}
+                </div>
+                <div class="modal-footer">
+                  <p>Game created by Andrés Campuzano</p>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Play again</button>
+                </div>
+              </div>
+            </div>
+          </div>
+                `;
+      return renderModal(templateModal);
+    } else if (didIWon === "draw") {
+      let templateModal = `
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h5 id="exampleModalLabel" class="badge badge-pill badge-warning" style="
+                font-size: 1.5em;
+                border-radius: 5px;
+            ">Draw</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    ${y}
+                </div>
+                <div class="modal-footer">
+                  <p>Game created by Andrés Campuzano</p>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Play again</button>
+                </div>
+              </div>
+            </div>
+          </div>
+                `;
+      return renderModal(templateModal);
     }
-    function renderModal(templateModal) {
-        idToRenderModal.innerHTML = templateModal;
-    }
+  }
+  //printing
+  function renderModal(templateModal) {
+    idToRenderModal.innerHTML = templateModal;
+  }
 
+  const x = Math.round(Math.random() * 9); // getting a random number between 0 and 9
+  // console.log(x);
 
-    const x = Math.round(Math.random() * 9); // getting a random number between 0 and 9
-    // console.log(x);
-
+  // 0 - 1 rock
+  // 2 - 3 paper
+  // 4 - 5 scissors
+  // 6 - 7 lizard
+  // 8 - 9 spock
+  if (x === 0 || x === 1) {
+    const machinePlayer = "rock";
     // 0 - 1 rock
+    if (playerOne === "paper") {
+      let y = `You: ${paper}, machine: ${rock}, Paper covers Rock`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === "scissors") {
+      let y = `You: ${scissors}, machine: ${rock}, Rock crushes Scissors`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === "lizard") {
+      let y = `You: ${lizard}, machine: ${rock}, Rock crushes Lizard`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === "spock") {
+      let y = `You: ${spock}, machine: ${rock}, Spock vaporizes Rock`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === machinePlayer) {
+      let y = `You: ${rock}, machine: ${rock}`;
+      const didIWon = "draw";
+      template(y, didIWon);
+    }
+  } else if (x === 2 || x === 3) {
+    const machinePlayer = "paper";
     // 2 - 3 paper
+    if (playerOne === "rock") {
+      let y = `You: ${rock}, machine: ${paper}, Paper covers Rock`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === "scissors") {
+      let y = `You: ${scissors}, machine: ${paper}, Scissors cuts Paper`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === "lizard") {
+      let y = `You: ${lizard}, machine: ${paper}, Lizard eats Paper`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === "spock") {
+      let y = `You: ${spock}, machine: ${paper}, Paper disproves Spock (I don't know why)`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === machinePlayer) {
+      let y = `You: ${paper}, machine: ${paper}`;
+      const didIWon = "draw";
+      template(y, didIWon);
+    }
+  } else if (x === 4 || x === 5) {
+    const machinePlayer = "scissors";
     // 4 - 5 scissors
+    if (playerOne === "rock") {
+      let y = `You: ${rock}, machine: ${scissors}, Rock crushes Scissors`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === "paper") {
+      let y = `You: ${paper}, machine: ${scissors}, Scissors cuts Paper`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === "lizard") {
+      let y = `You: ${lizard}, machine: ${scissors}, Scissors decapitates Lizard`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === "spock") {
+      let y = `You: ${spock}, machine: ${scissors}, Spock smashes Scissors`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === machinePlayer) {
+      let y = `You: ${scissors}, machine: ${scissors}`;
+      const didIWon = "draw";
+      template(y, didIWon);
+    }
+  } else if (x === 6 || x === 7) {
+    const machinePlayer = "lizard";
     // 6 - 7 lizard
-    // 8 - 9 spock
-    if (x === 0 || x === 1) {
-        const machinePlayer = "rock";
-        // 0 - 1 rock
-        if (playerOne === "paper") {
-            let y = `✅ you: ${paper}, machine: ${rock}, Paper covers Rock`;
-            template(y);
-        } else if (playerOne === "scissors") {
-            let y = `❌ you: ${scissors}, machine: ${rock}, Rock crushes Scissors`;
-            template(y);
-        } else if (playerOne === "lizard") {
-            let y = `❌ you: ${lizard}, machine: ${rock}, Rock crushes Lizard`;
-            template(y);
-        } else if (playerOne === "spock") {
-            let y = `✅ you: ${spock}, machine: ${rock}, Spock vaporizes Rock`;
-            template(y);
-        } else if (playerOne === machinePlayer) {
-            let y = `DRAW, you: ${rock}, machine: ${rock}`;
-            template(y);
-        }
-    } else if (x === 2 || x === 3) {
-        const machinePlayer = "paper";
-        // 2 - 3 paper
-        if (playerOne === "rock") {
-            let y = `❌ you: ${rock}, machine: ${paper}, Paper covers Rock`;
-            template(y);
-        } else if (playerOne === "scissors") {
-            let y = `✅ you: ${scissors}, machine: ${paper}, Scissors cuts Paper`;
-            template(y);
-        } else if (playerOne === "lizard") {
-            let y = `✅ you: ${lizard}, machine: ${paper}, Lizard eats Paper`;
-            template(y);
-        } else if (playerOne === "spock") {
-            let y = `❌ you: ${spock}, machine: ${paper}, Paper disproves Spock (I don't know why)`;
-            template(y);
-        } else if (playerOne === machinePlayer) {
-            let y = `DRAW, you: ${paper}, machine: ${paper}`;
-            template(y);
-        }
-    } else if (x === 4 || x === 5) {
-        const machinePlayer = "scissors";
-        // 4 - 5 scissors
-        if (playerOne === "rock") {
-            let y = `✅ you: ${rock}, machine: ${scissors}, Rock crushes Scissors`;
-            template(y);
-        } else if (playerOne === "paper") {
-            let y = `❌ you: ${paper}, machine: ${scissors}, Scissors cuts Paper`;
-            template(y);
-        } else if (playerOne === "lizard") {
-            let y = `❌ you: ${lizard}, machine: ${scissors}, Scissors decapitates Lizard`;
-            template(y);
-        } else if (playerOne === "spock") {
-            let y = `✅ you: ${spock}, machine: ${scissors}, Spock smashes Scissors`;
-            template(y);
-        } else if (playerOne === machinePlayer) {
-            let y = `DRAW, you: ${scissors}, machine: ${scissors}`;
-            template(y);
-        }
-    } else if (x === 6 || x === 7) {
-        const machinePlayer = "lizard";
-        // 6 - 7 lizard
-        if (playerOne === "rock") {
-            let y = `✅ you: ${rock}, machine: ${lizard}, Rock crushes Lizard`;
-            template(y);
-        } else if (playerOne === "paper") {
-            let y = `❌ you: ${paper}, machine: ${lizard}, Lizard eats Paper`;
-            template(y);
-        } else if (playerOne === "scissors") {
-            let y = `✅ you: ${scissors}, machine: ${lizard}, Scissors decapitates Lizard`;
-            template(y);
-        } else if (playerOne === "spock") {
-            let y = `❌ you: ${spock}, machine: ${lizard}, Lizard poisons Spock`;
-            template(y);
-        } else if (playerOne === machinePlayer) {
-            let y = `DRAW, you: ${lizard}, machine: ${lizard}`;
-            template(y);
-        }
+    if (playerOne === "rock") {
+      let y = `You: ${rock}, machine: ${lizard}, Rock crushes Lizard`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === "paper") {
+      let y = `You: ${paper}, machine: ${lizard}, Lizard eats Paper`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === "scissors") {
+      let y = `You: ${scissors}, machine: ${lizard}, Scissors decapitates Lizard`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === "spock") {
+      let y = `You: ${spock}, machine: ${lizard}, Lizard poisons Spock`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === machinePlayer) {
+      let y = `You: ${lizard}, machine: ${lizard}`;
+      const didIWon = "draw";
+      template(y, didIWon);
     }
-
-    else if (x === 8 || x === 9) {
-        const machinePlayer = "spock";
-        //     // 8 - 9 spock
-        if (playerOne === "rock") {
-            let y = `❌ you: ${playerOne}, machine: ${spock}, Spock vaporizes Rock`;
-            template(y);
-        } else if (playerOne === "paper") {
-            let y = `✅ you: ${playerOne}, machine: ${spock}, Paper disproves Spock (I don't know why)`;
-            template(y);
-        } else if (playerOne === "scissors") {
-            let y = `❌ you: ${playerOne}, machine: ${spock}, Spock smashes Scissors`;
-            template(y);
-        } else if (playerOne === "lizard") {
-            let y = `✅ you: ${playerOne}, machine: ${spock}, Lizard poisons Spock`;
-            template(y);
-        } else if (playerOne === machinePlayer) {
-            let y = `DRAW, you: ${spock}, machine: ${spock}`;
-        }
+  } else if (x === 8 || x === 9) {
+    const machinePlayer = "spock";
+    //     // 8 - 9 spock
+    if (playerOne === "rock") {
+      let y = `You: ${playerOne}, machine: ${spock}, Spock vaporizes Rock`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === "paper") {
+      let y = `You: ${playerOne}, machine: ${spock}, Paper disproves Spock (I don't know why)`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === "scissors") {
+      let y = `You: ${playerOne}, machine: ${spock}, Spock smashes Scissors`;
+      const didIWon = "no";
+      template(y, didIWon);
+    } else if (playerOne === "lizard") {
+      let y = `You: ${playerOne}, machine: ${spock}, Lizard poisons Spock`;
+      const didIWon = "yes";
+      template(y, didIWon);
+    } else if (playerOne === machinePlayer) {
+      let y = `You: ${spock}, machine: ${spock}`;
+      const didIWon = "draw";
+      template(y, didIWon);
     }
+  }
 }
-
-
-
