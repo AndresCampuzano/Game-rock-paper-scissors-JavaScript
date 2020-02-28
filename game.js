@@ -135,7 +135,7 @@ function game(playerOne) {
   // 4 - 5 scissors
   // 6 - 7 lizard
   // 8 - 9 spock
-  if (x === 0 || x === 1) {
+  if (x <= 1) {
     const machinePlayer = "rock";
     // 0 - 1 rock
     if (playerOne === "paper") {
@@ -159,7 +159,7 @@ function game(playerOne) {
       const didIWon = "draw";
       template(y, didIWon);
     }
-  } else if (x === 2 || x === 3) {
+  } else if (x <= 3) {
     const machinePlayer = "paper";
     // 2 - 3 paper
     if (playerOne === "rock") {
@@ -183,7 +183,7 @@ function game(playerOne) {
       const didIWon = "draw";
       template(y, didIWon);
     }
-  } else if (x === 4 || x === 5) {
+  } else if (x <= 5) {
     const machinePlayer = "scissors";
     // 4 - 5 scissors
     if (playerOne === "rock") {
@@ -207,7 +207,7 @@ function game(playerOne) {
       const didIWon = "draw";
       template(y, didIWon);
     }
-  } else if (x === 6 || x === 7) {
+  } else if (x <= 7) {
     const machinePlayer = "lizard";
     // 6 - 7 lizard
     if (playerOne === "rock") {
@@ -231,7 +231,7 @@ function game(playerOne) {
       const didIWon = "draw";
       template(y, didIWon);
     }
-  } else if (x === 8 || x === 9) {
+  } else if (x <= 9) {
     const machinePlayer = "spock";
     //     // 8 - 9 spock
     if (playerOne === "rock") {
