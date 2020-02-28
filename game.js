@@ -239,7 +239,7 @@ function game(playerOne) {
       const didIWon = "no";
       template(y, didIWon);
     } else if (playerOne === "paper") {
-      let y = `You: ${playerOne}, machine: ${spock}, Paper disproves Spock (I don't know why)`;
+      let y = `You: ${paper}, machine: ${spock}, Paper disproves Spock (I don't know why)`;
       const didIWon = "yes";
       template(y, didIWon);
     } else if (playerOne === "scissors") {
